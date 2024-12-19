@@ -1,101 +1,193 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { FaHome, FaShoppingCart, FaCouch, FaCarrot, FaMoneyBillAlt, FaRegNewspaper } from 'react-icons/fa';
+import { ReactTyped } from "react-typed";
+import WaitlistModal from "./components/features/WaitListModal";
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <div className="flex flex-col md:flex-row bg-gradient-to-r from-purple-500 to-green-500 h-auto md:h-[70%] m-[10px] rounded-[30px] mb-10">
+        <div className="w-full md:w-[52%] p-[30px] justify-between gap-16">
+          <h1 className="text-[30px] md:text-[50px] text-white mb-5 h-[150px]"><b><p className="text-[#00FF26FF] text-[40px] md:text-[60px]">Claara!</p> <ReactTyped
+            strings={['The card that does it all.', 'Earn rewards on your rent.', 'Simplicity and transparency.']}
+            typeSpeed={40}
+            backSpeed={60}
+            loop
+          /></b></h1>
+          <p className="text-[16px] md:text-[20px] text-white mb-10 md:mb-20">Rewards and  Benefits on everything spent on your rent and home. Without the downsides of a credit card, simplicity and transparency built right in.<br></br> The management and reward card for your property.</p>
+          <button
+            onClick={openModal}
+            type="submit"
+            className="w-[200px] rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
           >
             <Image
               className="dark:invert"
-              src="/vercel.svg"
+              src="/globe.svg"
               alt="Vercel logomark"
               width={20}
               height={20}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Join the waitlist!
+          </button>
+          <WaitlistModal isOpen={isModalOpen} onClose={closeModal} />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <div className="w-full md:w-[50%] mt-10 md:mt-0">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            className="dark:invert mx-auto"
+            src="/gifs/three_cards.gif"
+            alt="claara cards"
+            width={680}
+            height={200}
+            unoptimized
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+      </div>
+
+
+      <div className="flex flex-col md:flex-row h-auto md:h-[440px] m-[10px] rounded-[30px] mb-10">
+        <div className="w-full md:w-[50%] order-first md:order-first">
           <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            className="dark:invert mx-auto"
+            src="/images/house.png"
+            alt="claara cards"
+            width={400}
+            height={400}
+            unoptimized
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+
+        <div className="w-full md:w-[45%] p-[30px] rounded-[30px] gap-5 justify-start items-start bg-gradient-to-r from-purple-500 to-green-500">
+          <div className="text-2xl mb-4 justify-right text-right px-4 font-bold text-[#00FF26FF]">Earn on your...</div>
+
+          <div className="gap-5 flex flex-row flex-wrap justify-start items-start">
+            <div className="rounded-[10px] border border-solid border-white flex items-center justify-center p-2 md:w-[230px] md:h-[100px]">
+              <span className="text-white text-2xl">Rent</span>
+              <FaHome className="ml-2 text-white" />
+            </div>
+            <div className="rounded-[10px] border border-solid border-white flex items-center justify-center p-2 md:w-[350px] md:h-[100px]">
+              <span className="text-white text-2xl">Shopping</span>
+              <FaShoppingCart className="ml-2 text-white" />
+            </div>
+            <div className="rounded-[10px] border border-solid border-white flex items-center justify-center p-2 md:w-[350px] md:h-[100px]">
+              <span className="text-white text-2xl">Furniture</span>
+              <FaCouch className="ml-2 text-white" />
+            </div>
+            <div className="rounded-[10px] border border-solid border-white flex items-center justify-center p-2 md:w-[230px] md:h-[100px]">
+              <span className="text-white text-2xl">Groceries</span>
+              <FaCarrot className="ml-2 text-white" />
+            </div>
+            <div className="rounded-[10px] border border-solid border-white flex items-center justify-center p-2 md:w-[230px] md:h-[100px]">
+              <span className="text-white text-2xl">Bills</span>
+              <FaMoneyBillAlt className="ml-2 text-white" />
+            </div>
+            <div className="rounded-[10px] border border-solid border-white flex items-center justify-center p-2 md:w-[350px] md:h-[100px]">
+              <span className="text-white text-2xl">Subscriptions</span>
+              <FaRegNewspaper className="ml-2 text-white" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="services">
+        <div className="flex flex-col md:flex-row h-auto md:h-[70%] m-[10px] rounded-[30px] mb-10">
+          <div className="w-full md:w-[50%] p-[30px] justify-between gap-16">
+            <h1 className="text-[30px] md:text-[50px] mb-5"><b><p className="text-[#00FF26FF] text-[40px] md:text-[60px]">The Claara</p> Homeowners Card.</b></h1>
+            <p className="text-[16px] md:text-[20px] mb-5 md:mb-5">Get Claara rewards on your monthly mortgage related payments as well as on home & everyday purchases made with the Claara Homeowners Card. Benefits at your home. Earn points on your largest expense - rent, bills, groceries and track your expenses. Build credit with every payment, earning even more rewarding.</p>
+            <ul className="text-[16px] md:text-[20px] mb-5 md:mb-5 list-disc list-inside">
+              <li>Earn points on your property related payments.</li>
+              <li>Get Claara rewards on home & everyday purchases made with the Claara Homeowners Card.</li>
+              <li>Track your expenses.</li>
+              <li>Build credit with every payment, earning even more rewarding.</li>
+            </ul>
+
+            <p className="text-[16px] md:text-[20px]">Easy-to-use estate cards, bill payments, accounting, and a whole lot more. All in one place.</p>
+
+            <button
+              onClick={openModal}
+              type="submit"
+              className="w-[200px] rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 mt-10"
+            >
+              <Image
+                className="dark:invert"
+                src="/globe.svg"
+                alt="Vercel logomark"
+                width={20}
+                height={20}
+              />
+              Join the waitlist!
+            </button>
+            <WaitlistModal isOpen={isModalOpen} onClose={closeModal} />
+          </div>
+          <div className="w-full md:w-[50%] mt-10 md:mt-0">
+            <Image
+              className="dark:invert mx-auto"
+              src="/gifs/multi_card.gif"
+              alt="claara cards"
+              width={680}
+              height={200}
+              unoptimized
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div className="flex flex-col md:flex-row bg-gradient-to-r from-purple-500 to-green-500 h-auto md:h-[70%] m-[10px] rounded-[30px] mb-10">
+          <div className="w-full md:w-[55%] p-[30px] justify-between gap-16">
+            <h1 className="text-[30px] md:text-[50px] mb-5"><b><p className="text-white text-[40px] md:text-[30px]">About Us</p></b></h1>
+            <p className="text-[16px] md:text-[20px] mb-10 md:mb-20 text-white">
+              Claara is a financial technology company that aims to revolutionize the way homeowners manage their finances. Our mission is to provide innovative solutions that simplify and streamline the homeownership experience, empowering individuals to achieve their financial goals with ease. We offer a range of products and services designed to make homeownership more accessible, affordable, and rewarding. From our innovative Homeowners Card to personalized financial planning tools, we strive to create a seamless and enjoyable experience for our customers.
+            </p>
+          </div>
+          <div className="w-full md:w-[40%] p-[30px] justify-between gap-16">
+            <h1 className="text-[30px] md:text-[50px] text-white mb-5"><b><p className="text-white text-[40px] md:text-[30px]">Contact Us</p></b></h1>
+            <form className="flex flex-col gap-4" action="/api/contact" method="POST">
+              <input
+                type="text"
+                placeholder="Name"
+                className="p-2 rounded-md text-[16px] md:text-[20px]"
+                name="name"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="p-2 rounded-md text-[16px] md:text-[20px]"
+                name="email"
+                required
+              />
+              <textarea
+                placeholder="Message"
+                rows={4}
+                className="p-2 rounded-md text-[16px] md:text-[20px]"
+                name="message"
+                required
+              />
+              <button
+                type="submit"
+                className="w-[200px] rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </>
+
   );
 }
